@@ -1,0 +1,51 @@
+#include <math.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+    int *start;  
+    int i, n,k;
+    printf("Количество чисел для преобразования: ");
+    scanf("%d", &n);
+    start = (int*)malloc(n * sizeof(int));
+    for (i = 0; i<n; i++){
+        printf("Введите %d число в двоичном коде:", i+1);
+        scanf("%d", &start[i]);
+    }
+    printf("Числа в двоичной системе:");
+    for (i = 0; i<n; i++){
+        printf("%d ", start[i]);
+    }
+    printf("\n");
+    printf("Результат преобразования:");
+    for (k=0; k<n; k++){
+        char stop[1000]; 
+        sprintf(stop,"%d",start[k]);
+        int str = strlen (stop);
+        int *b;
+        int r;
+        b = (int*)malloc(str * sizeof(int));
+            for (r=0; r<str; r++){
+            int h = str-r-1;
+            if (stop[r] == '1'){ 
+                b[r]  = pow(2,h);
+                }
+            else { 
+                b[r]  = 0; 
+                }
+            }
+            int sum=0;
+            for (r=0; r<str; r++){ 
+                sum += b[r];
+            }
+            if (i==0){
+                printf("%d",sum);
+            }
+            else{
+                printf(" %d",sum);  
+            }
+        }
+    free(start);
+    getchar();   getchar();
+    return 0;
+}
